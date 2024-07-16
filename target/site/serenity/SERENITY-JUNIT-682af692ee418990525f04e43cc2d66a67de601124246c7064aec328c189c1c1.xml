@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="1" name="Abrir la pagina web de booking para reservar un hotel" skipped="0" tests="1" time="62.05" timestamp="2024-07-16 05:07:19"><testcase name="Filtrar Buequeda Hotel"><failure message="Expected condition failed: waiting for By.xpath: //*[@id=&quot;b2indexPage&quot;]/div[37]/div/div/div/div[1]/div[1]/div/button/span/span/svg/path to be present (tried for 10 second(s) with 100 milliseconds interval)&#10;Build info: version: '4.1.2', revision: '9a5a329c5a'&#10;System info: host: '3V4N5', ip: '10.99.43.53', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.20'&#10;Driver info: driver.version: unknown" type="net.thucydides.core.webdriver.exceptions.ElementShouldBePresentException">Expected condition failed: waiting for By.xpath: //*[@id="b2indexPage"]/div[37]/div/div/div/div[1]/div[1]/div/button/span/span/svg/path to be present (tried for 10 second(s) with 100 milliseconds interval)
+Build info: version: '4.1.2', revision: '9a5a329c5a'
+System info: host: '3V4N5', ip: '10.99.43.53', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.20'
+Driver info: driver.version: unknown</failure><system-err>Expected condition failed: waiting for By.xpath: //*[@id="b2indexPage"]/div[37]/div/div/div/div[1]/div[1]/div/button/span/span/svg/path to be present (tried for 10 second(s) with 100 milliseconds interval)
+Build info: version: '4.1.2', revision: '9a5a329c5a'
+System info: host: '3V4N5', ip: '10.99.43.53', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.20'
+Driver info: driver.version: unknown&#13;
+com.co.booking.tasks.Reserva.performAs(Reserva.java:16)&#13;
+com.co.booking.stepdefinitions.ReservaBookingStepDefinition.elUsuarioSeleccionaLosFiltrosDeBusqueda(ReservaBookingStepDefinition.java:34)&#13;
+io.cucumber.java.Invoker.doInvoke(Invoker.java:66)&#13;
+io.cucumber.java.Invoker.invoke(Invoker.java:24)&#13;
+io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)&#13;
+io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)&#13;
+io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)&#13;
+io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)&#13;
+io.cucumber.core.runner.TestStep.executeStep(TestStep.java:86)&#13;
+io.cucumber.core.runner.TestStep.run(TestStep.java:57)&#13;
+io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)&#13;
+io.cucumber.core.runner.TestCase.run(TestCase.java:95)&#13;
+io.cucumber.core.runner.Runner.runPickle(Runner.java:75)&#13;
+io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$3(CucumberExecutionContext.java:151)&#13;
+io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)&#13;
+io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:151)&#13;
+io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:144)&#13;
+io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:28)&#13;
+io.cucumber.junit.FeatureRunner.run(FeatureRunner.java:137)&#13;
+io.cucumber.junit.CucumberSerenityRunner.runChild(CucumberSerenityRunner.java:258)&#13;
+io.cucumber.junit.CucumberSerenityRunner.runChild(CucumberSerenityRunner.java:58)&#13;
+</system-err></testcase></testsuite>

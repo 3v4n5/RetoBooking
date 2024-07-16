@@ -1,0 +1,80 @@
+buildscript {
+
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    ext {
+        serenityVersion = '4.0.12'
+        cucumberVersion = '7.11.0'
+        JunitVersion = '5.9.3'
+        appiumVersion = '8.3.0'
+    }
+    dependencies {
+        classpath("net.serenity-bdd:serenity-gradle-plugin:$rootProject.ext.serenityVersion")
+        classpath("net.serenity-bdd:serenity-single-page-report:$rootProject.ext.serenityVersion")
+
+    }
+
+}
+plugins {
+    id 'java'
+    id 'org.gradle.test-retry' version '1.5.6'
+}
+repositories {
+    mavenCentral()
+}
+group = 'Comfandi'
+version = '1.0-SNAPSHOT'
+
+apply plugin: 'application'
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: "jacoco"
+apply plugin: 'idea'
+apply plugin: 'net.serenity-bdd.serenity-gradle-plugin'
+
+
+sourceCompatibility = 11
+
+serenity {
+    reports = ["single-page-html"]
+}
+
+dependencies {
+
+    implementation "org.junit.jupiter:junit-jupiter-engine:$rootProject.ext.JunitVersion"
+
+    implementation "io.cucumber:cucumber-junit-platform-engine:$rootProject.ext.cucumberVersion"
+    implementation "io.cucumber:cucumber-java:$rootProject.ext.cucumberVersion"
+
+    implementation 'io.appium:java-client:8.6.0'
+
+    implementation "net.serenity-bdd:serenity-core:$rootProject.ext.serenityVersion"
+    implementation "net.serenity-bdd:serenity-junit:$rootProject.ext.serenityVersion"
+    implementation "net.serenity-bdd:serenity-cucumber:$rootProject.ext.serenityVersion"
+    implementation "net.serenity-bdd:serenity-screenplay:$rootProject.ext.serenityVersion"
+    implementation "net.serenity-bdd:serenity-screenplay-webdriver:$rootProject.ext.serenityVersion"
+    implementation "net.serenity-bdd:serenity-rest-assured:$rootProject.ext.serenityVersion"
+    implementation "net.serenity-bdd:serenity-screenplay-rest:$rootProject.ext.serenityVersion"
+
+    implementation 'org.apache.logging.log4j:log4j-core:2.22.0'
+
+    implementation 'org.seleniumhq.selenium:selenium-java:4.13.0'
+
+}
+tasks.withType(Test).configureEach {
+
+    boolean isCiServer = System.getenv().containsKey("CI")
+    test {
+        retry {
+            maxRetries = 0
+            maxFailures = 100
+            failOnPassedAfterRetry = true
+        }
+    }
+
+    gradle.startParameter.continueOnFailure = true
+    test.finalizedBy(aggregate)
+}

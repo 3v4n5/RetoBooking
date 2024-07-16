@@ -1,0 +1,60 @@
+repositories {
+    mavenCentral()
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("net.serenity-bdd:serenity-gradle-plugin:2.4.34")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin:'net.serenity-bdd.aggregator'
+apply plugin: 'jacoco'
+
+ext {
+    serenityCoreVersion = '3.2.1'
+    serenityCucumberVersion = '3.2.1'
+}
+
+dependencies {
+
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    implementation group: 'net.serenity-bdd', name: 'serenity-gradle-plugin', version: '2.4.34'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.17.1'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.17.1'
+    implementation group: 'org.apache.commons',name: 'commons-configuration2',version: '2.7'
+    implementation(group: 'com.jcraft', name: 'jsch', version: '0.1.55')
+
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.assertj:assertj-core:3.23.1'
+    testImplementation 'org.slf4j:slf4j-simple:2.0.3'
+    implementation 'net.sf.jt400:jt400:11.0'
+    implementation 'org.jvnet.com4j:com4j:20110320'
+
+    implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '3.17'
+    implementation group: 'org.apache.poi', name: 'poi', version: '3.17'
+    implementation group: 'org.jvnet.com4j', name: 'com4j', version: '20110320'
+
+    implementation "net.serenity-bdd:serenity-core:${serenityCoreVersion}"
+    implementation "net.serenity-bdd:serenity-junit:${serenityCoreVersion}"
+    implementation "net.serenity-bdd:serenity-cucumber:${serenityCucumberVersion}"
+    implementation "net.serenity-bdd:serenity-screenplay:${serenityCoreVersion}"
+    implementation "net.serenity-bdd:serenity-screenplay-webdriver:${serenityCoreVersion}"
+    implementation "net.serenity-bdd:serenity-model:${serenityCoreVersion}"
+    implementation "net.serenity-bdd:serenity-reports:${serenityCoreVersion}"
+    implementation "io.github.bonigarcia:webdrivermanager:5.5.3"
+
+}
+tasks.withType(Test){
+    systemProperties = System.properties as Map<String, ?>
+}
+
+
+gradle.startParameter.continueOnFailure = true
+
